@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranger Things App</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/normalize.css" />
+</head>
+<body>
+    <h1>Welcome to Hawkins</h1>
+
+    <form action="/people" method="POST">
+        <input type="text" placeholder="name" name="name">
+        <input type="text" placeholder="species" name="species">
+        <input type="text" placeholder="status" name="status">
+        <button type="submit">Submit</button>
+    </form>
+    <ul class="people">
+        <!-- Loop through people -->
+        <% for(var i = 0; i < people.length; i++) {%>
+          <li class="person">
+            <!-- Output name from the iterated people object -->
+            <span><%= people[i].name %></span>
+             <!-- Output species from the iterated people object -->
+            <span><%= people[i].species %></span>
+             <!-- Output status from the iterated people object -->
+            <span><%= people[i].status %></span>
+          </li>
+        <% } %>
+      </ul>
+    <div id="message"></div>
+    <div>
+        <h2>Monster's Attack Humans</h2>
+        <p>
+            Change status to vulnerabe
+        </p>
+        <button id="update-button">Monsters Attack</button>
+    </div>
+
+    <div>
+        <h2>Kill the monsters!</h2>
+        <p>
+          Kill a monster
+        </p>
+        <button id="delete-button">Kill a monster</button>
+    </div>
+
+    <script src="/main.js"></script>
+</body>
+</html>
