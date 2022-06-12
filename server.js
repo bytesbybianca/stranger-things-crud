@@ -3,7 +3,7 @@ console.log('Welcome to Hawkins')
 const express = require('express');  // npm install express --save
 const app = express();
 const MongoClient = require('mongodb').MongoClient
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 require('dotenv').config() // npm install dotenv --save
 
 let db,
@@ -71,7 +71,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
               .catch(error => console.error(error))
           })
 
-        app.listen(process.env.PORT || PORT, () => {
+        app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`)
         })
     })
