@@ -22,7 +22,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         app.use(express.json())
 
         app.get('/', function(req, res) {
-            db.collection('people').find().toArray()
+            peopleCollection.find().toArray()
             .then(results => {
               console.log(results)
               res.render('index.ejs', { people: results })
