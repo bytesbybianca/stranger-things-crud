@@ -21,18 +21,40 @@
 /* BASE STYLES
 /*******************************************/
 
+html *, body * {
+     margin: 0;
+     padding: 0;
+}
+
+/* body * {
+     border: 1px solid red;
+} */
+
 body {
-     background-color: pink;
+     background-color: black;
+     color: white;
+}
+
+.hawkins {
+     background-image: url('../images/hawkins.JPG');
+     background-size: cover;
+     background-position: bottom;
+}
+
+.upside-down {
+     background-image: url('../images/upside-down.png');
+     background-size: cover;
+     background-position: top;
 }
 
 ul {
      list-style: none;
 }
 
-.break {
+/* .break {
      flex-basis: 100%;
      height: 0;
-   }
+   } */
 
 /******************************************
 /* LAYOUT
@@ -46,30 +68,24 @@ footer {
 }
 
 .wrapper {
-     background-color: aliceblue;
-     width: 90%;
-     display: block;
-     margin: auto;
-     padding: 2rem;
-}
-
-.choose-characters {
      display: flex;
+     justify-content: center;
+     flex-direction: row;
+     min-height: 90vh;
 }
 
-.choose-characters div {
-     background-color: white;
-     width: 50%;
+.play {
+     width: 30%;
 }
 
-.form {
-     display: flex;
-     justify-content: center;  
+.place {
+     width: 70%;
 }
 
-.form button {
-     width: 45%;
+.hawkins, .upside-down {
+     height: 50%;
 }
+
 
 /******************************************
 /* ADDITIONAL STYLES

@@ -1,9 +1,24 @@
-// main.js
-const update = document.querySelector('#update-button')
-const deleteButton = document.querySelector('#delete-button')
+// buttons for play
+const monsterAttacksHuman = document.querySelector('#monster-attacks-human')
+const killMonster = document.querySelector('#kill-monster')
+
+// error message
 const messageDiv = document.querySelector('#message')
 
-deleteButton.addEventListener('click', _ => {
+// selecting species
+const selectHuman = document.querySelector('#radioHuman')
+const selectMonster = document.querySelector('#radioMonster')
+const updatePlace = document.querySelector('#place')
+
+selectHuman.addEventListener('click', _ => {
+    updatePlace.value = 'hawkins'
+})
+
+selectMonster.addEventListener('click', _ => {
+    updatePlace.value = 'upside down'
+})
+
+killMonster.addEventListener('click', _ => {
   fetch('/people', {
     method: 'delete',
     headers: { 'Content-Type': 'application/json' },
@@ -24,12 +39,12 @@ deleteButton.addEventListener('click', _ => {
       .catch(error => console.error(error))
 })
 
-update.addEventListener('click', _ => {
+monsterAttacksHuman.addEventListener('click', _ => {
     fetch('/people', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        status: 'Vulnerable'
+        status: 'vulnerable'
       })
     })
     .then(res => {

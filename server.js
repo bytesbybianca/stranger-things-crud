@@ -18,6 +18,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 
         app.set('view engine', 'ejs')
         app.use(express.static('public'))
+        app.use('/images', express.static('images'));
         app.use(express.urlencoded({ extended: true }))
         app.use(express.json())
 
@@ -42,7 +43,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         app.put('/people', (req, res) => {
             peopleCollection.findOneAndUpdate(
                 { species: 'Human',
-                  status: 'Alive' },
+                  status: 'alive' },
                 {
                   $set: {
                     status: req.body.status,

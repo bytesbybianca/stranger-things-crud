@@ -10,43 +10,74 @@
 </head>
 <body>
     <h1>Welcome to Hawkins</h1>
+    <div class="wrapper">
+        <section class="play">
+            <form action="/people" method="POST">
+                <input type="text" placeholder="name" name="name">
+                <input type="radio" id="radioHuman" name="species" value="Human" required>
+                <label for="radioHuman">Human</label>
+                <input type="radio" id="radioMonster" name="species" value="Monster" required>
+                <label for="radioMonster">Monster</label>
+                <input placeholder="status" name="status" value="alive" hidden>
+                <input placeholder="place" id="place" name="place" value="place" hidden>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="message"></div>
+            <div>
+                <h2>Monster's Attack Humans</h2>
+                <p>
+                    Change status to vulnerabe
+                </p>
+                <button id="monster-attacks-human">Monsters Attack</button>
+            </div>
+        
+            <div>
+                <h2>Kill the monsters!</h2>
+                <p>
+                Kill a monster
+                </p>
+                <button id="kill-monster">Kill a monster</button>
+            </div>
+        </section>
 
-    <form action="/people" method="POST">
-        <input type="text" placeholder="name" name="name">
-        <input type="text" placeholder="species" name="species">
-        <input type="text" placeholder="status" name="status">
-        <button type="submit">Submit</button>
-    </form>
-    <ul class="people">
-        <!-- Loop through people -->
-        <% for(var i = 0; i < people.length; i++) {%>
-          <li class="person">
-            <!-- Output name from the iterated people object -->
-            <span><%= people[i].name %></span>
-             <!-- Output species from the iterated people object -->
-            <span><%= people[i].species %></span>
-             <!-- Output status from the iterated people object -->
-            <span><%= people[i].status %></span>
-          </li>
-        <% } %>
-      </ul>
-    <div id="message"></div>
+        <section class="place">
+            <div class="hawkins">
+                <ul class="humans">
+                    <!-- Loop through people -->
+                    <% for(var i = 0; i < people.length; i++) {%>
+                    <li class="human">
+                        <% if(people[i].place == 'hawkins') { %>
+                            <!-- Output name from the iterated people object -->
+                            <span><%= people[i].name %></span>
+                            <!-- Output species from the iterated people object -->
+                            <span><%= people[i].species %></span>
+                            <!-- Output status from the iterated people object -->
+                            <span><%= people[i].status %></span>
+                        <% } %>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="upside-down">
+                <ul class="monsters">
+                    <!-- Loop through people -->
+                    <% for(var i = 0; i < people.length; i++) {%>
+                    <li class="monster">
+                        <% if(people[i].place == 'upside down') { %>
+                            <!-- Output name from the iterated people object -->
+                            <span><%= people[i].name %></span>
+                            <!-- Output species from the iterated people object -->
+                            <span><%= people[i].species %></span>
+                            <!-- Output status from the iterated people object -->
+                            <span><%= people[i].status %></span>
+                        <% } %>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </section>
     <div>
-        <h2>Monster's Attack Humans</h2>
-        <p>
-            Change status to vulnerabe
-        </p>
-        <button id="update-button">Monsters Attack</button>
-    </div>
-
-    <div>
-        <h2>Kill the monsters!</h2>
-        <p>
-          Kill a monster
-        </p>
-        <button id="delete-button">Kill a monster</button>
-    </div>
-
     <script src="/main.js"></script>
 </body>
 </html>
